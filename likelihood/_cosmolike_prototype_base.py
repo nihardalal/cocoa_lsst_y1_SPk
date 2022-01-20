@@ -12,7 +12,7 @@ from cobaya.likelihoods._base_classes import _DataSetLikelihood
 from cobaya.log import LoggedError
 from getdist import IniFile
 
-import cosmolike_des_y3_interface as ci
+import cosmolike_lsst_y1_interface as ci
 
 # default is best fit LCDM - just need to be an ok Cosmology
 default_omega_matter = 0.315
@@ -310,7 +310,7 @@ class _cosmolike_prototype_base(_DataSetLikelihood):
     ci.set_nuisance_shear_calib(
       M = [
         params_values.get(p, None) for p in [
-          "DES_M"+str(i+1) for i in range(self.source_ntomo)
+          "LSST_M"+str(i+1) for i in range(self.source_ntomo)
         ]
       ]
     )
@@ -318,7 +318,7 @@ class _cosmolike_prototype_base(_DataSetLikelihood):
     ci.set_nuisance_shear_photoz(
       bias = [
         params_values.get(p, None) for p in [
-          "DES_DZ_S"+str(i+1) for i in range(self.source_ntomo)
+          "LSST_DZ_S"+str(i+1) for i in range(self.source_ntomo)
         ]
       ]
     )
@@ -326,17 +326,17 @@ class _cosmolike_prototype_base(_DataSetLikelihood):
     ci.set_nuisance_ia(
       A1 = [
         params_values.get(p, None) for p in [
-          "DES_A1_"+str(i+1) for i in range(self.source_ntomo)
+          "LSST_A1_"+str(i+1) for i in range(self.source_ntomo)
         ]
       ],
       A2 = [
         params_values.get(p, None) for p in [
-          "DES_A2_"+str(i+1) for i in range(self.source_ntomo)
+          "LSST_A2_"+str(i+1) for i in range(self.source_ntomo)
         ]
       ],
       B_TA = [
         params_values.get(p, None) for p in [
-          "DES_BTA_"+str(i+1) for i in range(self.source_ntomo)
+          "LSST_BTA_"+str(i+1) for i in range(self.source_ntomo)
         ]
       ],
     )
@@ -349,31 +349,31 @@ class _cosmolike_prototype_base(_DataSetLikelihood):
     ci.set_nuisance_bias(
       B1 = [
         params_values.get(p, None) for p in [
-          "DES_B1_"+str(i+1) for i in range(self.lens_ntomo)
+          "LSST_B1_"+str(i+1) for i in range(self.lens_ntomo)
         ]
       ],
       B2 = [
         params_values.get(p, None) for p in [
-          "DES_B2_"+str(i+1) for i in range(self.lens_ntomo)
+          "LSST_B2_"+str(i+1) for i in range(self.lens_ntomo)
         ]
       ],
       B_MAG = [
         params_values.get(p, None) for p in [
-          "DES_BMAG_"+str(i+1) for i in range(self.lens_ntomo)
+          "LSST_BMAG_"+str(i+1) for i in range(self.lens_ntomo)
         ]
       ]
     )
     ci.set_nuisance_clustering_photoz(
       bias = [
         params_values.get(p, None) for p in [
-          "DES_DZ_L"+str(i+1) for i in range(self.lens_ntomo)
+          "LSST_DZ_L"+str(i+1) for i in range(self.lens_ntomo)
         ]
       ]
     )
     ci.set_point_mass(
       PMV = [
         params_values.get(p, None) for p in [
-          "DES_PM"+str(i+1) for i in range(self.lens_ntomo)
+          "LSST_PM"+str(i+1) for i in range(self.lens_ntomo)
         ]
       ]
     )
@@ -383,10 +383,10 @@ class _cosmolike_prototype_base(_DataSetLikelihood):
   # ------------------------------------------------------------------------
 
   def set_baryon_related(self, **params_values):
-    self.baryon_pcs_qs[0] = params_values.get("DES_BARYON_Q1", None)
-    self.baryon_pcs_qs[1] = params_values.get("DES_BARYON_Q2", None)
-    self.baryon_pcs_qs[2] = params_values.get("DES_BARYON_Q3", None)
-    self.baryon_pcs_qs[3] = params_values.get("DES_BARYON_Q4", None)
+    self.baryon_pcs_qs[0] = params_values.get("LSST_BARYON_Q1", None)
+    self.baryon_pcs_qs[1] = params_values.get("LSST_BARYON_Q2", None)
+    self.baryon_pcs_qs[2] = params_values.get("LSST_BARYON_Q3", None)
+    self.baryon_pcs_qs[3] = params_values.get("LSST_BARYON_Q4", None)
     
   def add_baryon_pcs_to_datavector(self, datavector):    
     return datavector[:] + self.baryon_pcs_qs[0]*self.baryon_pcs[:,0] \

@@ -1,58 +1,18 @@
   # WL photo-z errors
   LSST_DZ_S1:
-    prior:
-      dist: norm
-      loc: 0.0
-      scale: 0.002
-    ref:
-      dist: norm
-      loc: 0.0
-      scale: 0.002
-    proposal: 0.002
+    value: 0.0
     latex: \Delta z_\mathrm{s,LSST}^1
   LSST_DZ_S2:
-    prior:
-      dist: norm
-      loc: 0.0
-      scale: 0.002
-    ref:
-      dist: norm
-      loc: 0.0
-      scale: 0.002
-    proposal: 0.002
+    value: 0.0
     latex: \Delta z_\mathrm{s,LSST}^2
   LSST_DZ_S3:
-    prior:
-      dist: norm
-      loc: 0.0
-      scale: 0.002
-    ref:
-      dist: norm
-      loc: 0.0
-      scale: 0.002
-    proposal: 0.002
+    value: 0.0
     latex: \Delta z_\mathrm{s,LSST}^3
   LSST_DZ_S4:
-    prior:
-      dist: norm
-      loc: 0.0
-      scale: 0.002
-    ref:
-      dist: norm
-      loc: 0.0
-      scale: 0.002
-    proposal: 0.002
+    value: 0.0
     latex: \Delta z_\mathrm{s,LSST}^4
   LSST_DZ_S5:
-    prior:
-      dist: norm
-      loc: 0.0
-      scale: 0.002
-    ref:
-      dist: norm
-      loc: 0.0
-      scale: 0.002
-    proposal: 0.002
+    value: 0.0
     latex: \Delta z_\mathrm{s,LSST}^5
 
   # ------------------------------------------------------------------------
@@ -65,8 +25,8 @@
       max:  5
     ref:
       dist: norm
-      loc: 0.5
-      scale: 0.1
+      loc: 0.7
+      scale: 0.5
     proposal: 0.5
     latex: A_\mathrm{1-IA,LSST}^1
   LSST_A1_2:
@@ -75,8 +35,8 @@
       max:  5
     ref:
       dist: norm
-      loc: 0.
-      scale: 0.1
+      loc: -1.7
+      scale: 0.5
     proposal: 0.5
     latex: A_\mathrm{1-IA,LSST}^2
   LSST_A1_3:
@@ -132,113 +92,38 @@
  # ------------------------------------------------------------------------
  # Lensing photo-z errors
   LSST_DZ_L1:
-    prior:
-      dist: norm
-      loc: 0.0
-      scale: 0.005
-    ref:
-      dist: norm
-      loc: 0.0
-      scale: 0.005
-    proposal: 0.005
+    value: 0.0
     latex: \Delta z_\mathrm{l,LSST}^1
   LSST_DZ_L2:
-    prior:
-      dist: norm
-      loc: 0.0
-      scale: 0.005
-    ref:
-      dist: norm
-      loc: 0.0
-      scale: 0.005
-    proposal: 0.005
+    value: 0.0
     latex: \Delta z_\mathrm{l,LSST}^2
   LSST_DZ_L3:
-    prior:
-      dist: norm
-      loc: 0.0
-      scale: 0.005
-    ref:
-      dist: norm
-      loc: 0.0
-      scale: 0.005
-    proposal: 0.005
+    value: 0.0
     latex: \Delta z_\mathrm{l,LSST}^3
   LSST_DZ_L4:
-    prior:
-      dist: norm
-      loc: 0.0
-      scale: 0.005
-    ref:
-      dist: norm
-      loc: 0.0
-      scale: 0.005
-    proposal: 0.005
+    value: 0.0
     latex: \Delta z_\mathrm{l,LSST}^4
   LSST_DZ_L5:
-    prior:
-      dist: norm
-      loc: 0.0
-      scale: 0.005
-    ref:
-      dist: norm
-      loc: 0.0
-      scale: 0.005
-    proposal: 0.005
+    value: 0.0
     latex: \Delta z_\mathrm{l,LSST}^5
   # ------------------------------------------------------------------------
   # ------------------------------------------------------------------------
   # ------------------------------------------------------------------------
   # Bin bias parameters
   LSST_B1_1:
-    prior:
-      min: 0.8
-      max: 3
-    ref:
-      dist: norm
-      loc: 1.24
-      scale: 0.15
-    proposal: 0.1
+    value: 1.24
     latex: b_\mathrm{1-LSST}^1
   LSST_B1_2:
-    prior:
-      min: 0.8
-      max: 3
-    ref:
-      dist: norm
-      loc: 1.36
-      scale: 0.15
-    proposal: 0.1
+    value: 1.36
     latex: b_\mathrm{1-LSST}^2
   LSST_B1_3:
-    prior:
-      min: 0.8
-      max: 3
-    ref:
-      dist: norm
-      loc: 1.47
-      scale: 0.15
-    proposal: 0.1
+    value: 1.47
     latex: b_\mathrm{1-LSST}^3
   LSST_B1_4:
-    prior:
-      min: 0.8
-      max: 3
-    ref:
-      dist: norm
-      loc: 1.60
-      scale: 0.15
-    proposal: 0.1
+    value: 1.60
     latex: b_\mathrm{1-LSST}^4
   LSST_B1_5:
-    prior:
-      min: 0.8
-      max: 3
-    ref:
-      dist: norm
-      loc: 1.76
-      scale: 0.1
-    proposal: 0.1
+    value: 1.76
     latex: b_\mathrm{1-LSST}^5
   # ------------------------------------------------------------------------
   # ------------------------------------------------------------------------
@@ -281,59 +166,19 @@
   # ------------------------------------------------------------------------
   # Shear calibration parameters
   LSST_M1:
-    prior:
-      dist: norm
-      loc: 0.0
-      scale: 0.005
-    ref:
-      dist: norm
-      loc: 0.0
-      scale: 0.005
-    proposal: 0.005
+    value: 0.0
     latex: m_\mathrm{LSST}^1
   LSST_M2:
-    prior:
-      dist: norm
-      loc: 0.0
-      scale: 0.005
-    ref:
-      dist: norm
-      loc: 0.0
-      scale: 0.005
-    proposal: 0.005
+    value: 0.0
     latex: m_\mathrm{LSST}^2
   LSST_M3:
-    prior:
-      dist: norm
-      loc: 0.0
-      scale: 0.005
-    ref:
-      dist: norm
-      loc: 0.0
-      scale: 0.005
-    proposal: 0.005
+    value: 0.0
     latex: m_\mathrm{LSST}^3
   LSST_M4:
-    prior:
-      dist: norm
-      loc: 0.0
-      scale: 0.005
-    ref:
-      dist: norm
-      loc: 0.0
-      scale: 0.005
-    proposal: 0.005
+    value: 0.0
     latex: m_\mathrm{LSST}^4
   LSST_M5:
-    prior:
-      dist: norm
-      loc: 0.0
-      scale: 0.005
-    ref:
-      dist: norm
-      loc: 0.0
-      scale: 0.005
-    proposal: 0.005
+    value: 0.0
     latex: m_\mathrm{LSST}^5
 
   # ------------------------------------------------------------------------
@@ -360,24 +205,10 @@
   # ------------------------------------------------------------------------
   # WL photo-z errors
   LSST_BARYON_Q1:
-    prior:
-        min: -3.
-        max: 12.
-    ref:
-        dist: norm
-        loc: 0.
-        scale: 1.
-    proposal: 1.
+    value: 0.0
     latex: Q1_\mathrm{LSST}^1
   LSST_BARYON_Q2:
-    prior:
-        min: -2.5
-        max: 2.5
-    ref:
-        dist: norm
-        loc: 0.
-        scale: 1.
-    proposal: 1.
+    value: 0.0
     latex: Q2_\mathrm{LSST}^2
   LSST_BARYON_Q3:
     value: 0.0

@@ -17,10 +17,7 @@ class lsst_3x2pt(_cosmolike_prototype_base):
         self.set_cosmo_related()
         self.set_lens_related(**params_values)
         self.set_source_related(**params_values)
-        if self.create_baryon_pca:
-            self.generate_baryonic_PCA(**params_values)
         datavector = ci.compute_data_vector_masked()
-        
         if self.use_baryon_pca:
             self.set_baryon_related(**params_values)
             datavector = self.add_baryon_pcs_to_datavector(datavector)
@@ -31,11 +28,8 @@ class lsst_3x2pt(_cosmolike_prototype_base):
         self.set_cosmo_related()
         self.set_lens_related(**params_values)
         self.set_source_related(**params_values)
-        if self.create_baryon_pca:
-            self.generate_baryonic_PCA(**params_values)
-        datavector = ci.compute_data_vector_masked()
+        datavector = np.array(ci.compute_data_vector_masked())
         if self.use_baryon_pca:
             self.set_baryon_related(**params_values)
             datavector = self.add_baryon_pcs_to_datavector(datavector)
-
         return np.array(datavector)

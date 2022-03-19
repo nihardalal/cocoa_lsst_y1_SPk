@@ -84,6 +84,8 @@ void cpp_initial_setup()
     nuisance.b_ta_z[i] = 0.0;
   }
 
+  like.high_def_integration = 1;
+
   spdlog::debug("\x1b[90m{}\x1b[0m: Ends", "initial_setup");
 }
 
@@ -249,8 +251,8 @@ const double theta_max_arcmin)
     "init_binning", "theta_max_arcmin", theta_max_arcmin);
 
   like.Ntheta = Ntheta;
-  like.vtmin = theta_min_arcmin * constants.arcmin;
-  like.vtmax = theta_max_arcmin * constants.arcmin;
+  like.vtmin = theta_min_arcmin * 2.90888208665721580e-4;
+  like.vtmax = theta_max_arcmin * 2.90888208665721580e-4;
   const double logdt = (std::log(like.vtmax)-std::log(like.vtmin))/like.Ntheta;
   like.theta = (double*) calloc(like.Ntheta, sizeof(double));
 
@@ -649,6 +651,26 @@ void cpp_init_baryon_pca_scenarios(std::string scenarios)
   return;
 }
 
+void cpp_init_accuracy_boost(const double accuracy_boost, const double sampling_boost,
+const int integration_accuracy)
+{
+  const double from_desy3_to_lsst_acc = 2;
+
+  Ntable.N_a = static_cast<int>(ceil(Ntable.N_a*accuracy_boost));
+  Ntable.N_ell_TATT = static_cast<int>(ceil(Ntable.N_ell_TATT*accuracy_boost));
+  Ntable.N_ell_TATT = static_cast<int>(ceil(Ntable.N_ell_TATT*from_desy3_to_lsst_acc));
+
+  Ntable.N_k_lin = static_cast<int>(ceil(Ntable.N_k_lin*sampling_boost));
+  Ntable.N_k_nlin = static_cast<int>(ceil(Ntable.N_k_nlin*sampling_boost));
+  Ntable.N_ell = static_cast<int>(ceil(Ntable.N_ell*sampling_boost));
+  
+  Ntable.N_theta  = static_cast<int>(ceil(Ntable.N_theta*sampling_boost));
+
+  Ntable.N_S2 = static_cast<int>(ceil(Ntable.N_S2*sampling_boost));
+  Ntable.N_DS = static_cast<int>(ceil(Ntable.N_DS*sampling_boost));
+
+  like.high_def_integration = integration_accuracy;
+}
 
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
@@ -2064,6 +2086,14 @@ PYBIND11_MODULE(cosmolike_lsst_y1_interface, m)
     &cpp_init_baryon_pca_scenarios,
     "Init scenario selection to generate baryonic PCA",
     py::arg("scenarios")
+  );
+
+  m.def("init_accuracy_boost",
+    &cpp_init_accuracy_boost,
+    "Init Accuracy and Sampling Boost (can slow down Cosmolike a lot)",
+    py::arg("accuracy_boost"),
+    py::arg("sampling_boost"),
+    py::arg("integration_accuracy")
   );
 
   // --------------------------------------------------------------------

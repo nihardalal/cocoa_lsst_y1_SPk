@@ -125,11 +125,12 @@ class _cosmolike_prototype_base(_DataSetLikelihood):
     self.k_interp_2D = np.power(10.0,self.log10k_interp_2D)
     self.len_k_interp_2D = len(self.k_interp_2D)
     self.len_pkz_interp_2D = self.len_log10k_interp_2D*self.len_z_interp_2D
-    self.extrap_kmax = 2.5e2 * self.acc
+    self.extrap_kmax = 2.5e2 * self.accuracyboost
 
     # ------------------------------------------------------------------------
 
     ci.initial_setup()
+    ci.init_accuracy_boost(self.accuracyboost, self.samplingboost, self.integration_accuracy)
 
     ci.init_probes(possible_probes=self.probe)
 
@@ -166,7 +167,7 @@ class _cosmolike_prototype_base(_DataSetLikelihood):
       ci.init_baryon_pca_scenarios(self.baryon_pca_select_simulations)
       self.use_baryon_pca = False
     else:
-      if ini.string('baryon_pca_file'):
+      if ini.string('baryon_pca_file', default=''):
         baryon_pca_file = ini.relativeFileName('baryon_pca_file')
         self.baryon_pcs = np.loadtxt(baryon_pca_file)
         self.use_baryon_pca = True
@@ -196,7 +197,7 @@ class _cosmolike_prototype_base(_DataSetLikelihood):
       "omegam": None,
       "Pk_interpolator": {
         "z": self.z_interp_2D,
-        "k_max": 20 * self.acc,
+        "k_max": 20 * self.accuracyboost,
         "nonlinear": (True,False),
         "vars_pairs": ([("delta_tot", "delta_tot")])
       },

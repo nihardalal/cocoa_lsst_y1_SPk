@@ -4,10 +4,9 @@ stop_at_error: True
 
 likelihood:
   lsst_y1.lsst_cosmic_shear:
-    accuracyboost: 1.0
-    samplingboost: 1.0
-    integration_accuracy: 1 # necessary (intead of zero)
     path: ./external_modules/data/lsst_y1
+    print_datavector: False
+    print_datavector_file: "./projects/lsst_y1/chains/example1_lsst_y1_theory.modelvector"
 
 params:
   As_1e9:
@@ -76,10 +75,21 @@ params:
       loc: 0.25
       scale: 0.1
     proposal: 0.05
+  w0pwa:
+    prior:
+      min: -5 
+      max: -0.01
+    ref:
+      dist: norm
+      loc: -0.99
+      scale: 0.05
+    proposal: 0.05
+    latex: w_{0,\mathrm{DE}}+w_{a,\mathrm{DE}}
+    drop: true
   w:
     prior:
       min: -3
-      max: 1
+      max: -0.01
     ref:
       dist: norm
       loc: -0.99
@@ -87,14 +97,7 @@ params:
     proposal: 0.05
     latex: w_{0,\mathrm{DE}}
   wa:
-    prior:
-      min: -3
-      max: 2
-    ref:
-      dist: norm
-      loc: 0
-      scale: 0.35
-    proposal: 0.2
+    value: 'lambda w0pwa, w: w0pwa - w'
     latex: w_{a,\mathrm{DE}}
   omegabh2:
     value: 'lambda omegab, H0: omegab*(H0/100)**2'
@@ -136,12 +139,12 @@ params:
 theory:
   camb:
     path: ./external_modules/code/CAMB
-    stop_at_error: True
+    stop_at_error: False
     use_renames: True
     extra_args:
       halofit_version: takahashi
       AccuracyBoost: 1.15
-      lens_potential_accuracy: 1.10
+      lens_potential_accuracy: 1.0
       num_massive_neutrinos: 1
       nnu: 3.046
       dark_energy_model: ppf
@@ -170,8 +173,8 @@ sampler:
       LSST_M5: -0.0158096
       LSST_A1_1: 0.606102
       LSST_A1_2: -1.51541
+      w0pwa: -0.9
       w: -0.9
-      wa: 0.0
       LSST_BARYON_Q1: 0.0
       LSST_BARYON_Q2: 0.0
 

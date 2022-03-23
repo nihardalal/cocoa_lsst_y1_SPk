@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#SBATCH --job-name=LSSTY1_MC1
-#SBATCH --output=LSSTY1_MC1-%j.out
+#SBATCH --job-name=LSSTY1_MC2
+#SBATCH --output=LSSTY1_MC2-%j.out
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=4
 #SBATCH --ntasks-per-socket=2

@@ -1,5 +1,5 @@
 timing: True
-debug: True
+debug: False
 stop_at_error: True
 
 likelihood:
@@ -8,9 +8,8 @@ likelihood:
     print_datavector: False
     print_datavector_file: "./projects/lsst_y1/chains/example2_lsst_y1_theory.modelvector"
     accuracyboost: 1.0
-    samplingboost: 1.0
     integration_accuracy: 0 # integer 0, 1 or 2 - necessary (instead of zero)
-    kmax_boltzmann: 5.0
+    kmax_boltzmann: 10.0
 
 params:
   As_1e9:

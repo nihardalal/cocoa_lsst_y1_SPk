@@ -18,7 +18,7 @@ By convention, the Cosmolike Organization hosts a Cobaya-Cosmolike project named
         $(cocoa) cd ../
         $(cocoa) source start_cocoa
  
-:warning: (*warning*) :warning: Remember to run the start_cocoa script only after cloning the project repository. The script *start_cocoa* creates necessary symbolic links and also adds the *Cobaya-Cosmolike interface* of all projects to `LD_LIBRARY_PATH` and `PYTHONPATH` paths.
+:warning: (**warning**) :warning: Remember to run the start_cocoa script only after cloning the project repository. The script *start_cocoa* creates necessary symbolic links and also adds the *Cobaya-Cosmolike interface* of all projects to `LD_LIBRARY_PATH` and `PYTHONPATH` paths.
 
 :four: **Step 4 of 5**: compile the project
  

@@ -163,7 +163,15 @@ void cpp_init_probes(std::string possible_probes)
     like.shear_pos = 1;
 
     spdlog::debug("\x1b[90m{}\x1b[0m: {} = {} selected", "init_probes",
-      "possible_probes", "xi + ggl (2x2pt)");
+      "possible_probes", "xi + ggl");
+  }
+  else if (possible_probes.compare("xi_gg") == 0)
+  {
+    like.shear_shear = 1;
+    like.pos_pos = 1;
+
+    spdlog::debug("\x1b[90m{}\x1b[0m: {} = {} selected", "init_probes",
+      "possible_probes", "xi + gg");
   }
   else
   {

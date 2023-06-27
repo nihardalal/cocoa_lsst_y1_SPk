@@ -8,8 +8,8 @@ likelihood:
     print_datavector: False
     print_datavector_file: "./projects/lsst_y1/chains/example1_lsst_y1_theory.modelvector"
     accuracyboost: 1.0
-    integration_accuracy: 0 # integer 0, 1 or 2 - necessary (instead of zero)
-    kmax_boltzmann: 10.0
+    integration_accuracy: 0
+    kmax_boltzmann: 5.0
 
 params:
   As_1e9:
@@ -146,7 +146,7 @@ theory:
     use_renames: True
     extra_args:
       halofit_version: takahashi
-      AccuracyBoost: 1.15
+      AccuracyBoost: 1.05
       lens_potential_accuracy: 1.0
       num_massive_neutrinos: 1
       nnu: 3.046
@@ -178,7 +178,5 @@ sampler:
       LSST_A1_2: -1.51541
       w0pwa: -0.9
       w: -0.9
-      LSST_BARYON_Q1: 0.0
-      LSST_BARYON_Q2: 0.0
 
 output: ./projects/lsst_y1/chains/EXAMPLE_EVALUATE1

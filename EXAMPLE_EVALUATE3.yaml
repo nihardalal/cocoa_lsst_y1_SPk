@@ -3,21 +3,12 @@ debug: False
 stop_at_error: True
 
 likelihood:
-  lsst_y1.lsst_3x2pt:
+  lsst_y1.lsst_2x2pt:
     path: ./external_modules/data/lsst_y1
     print_datavector: False
-    #print_datavector_file: "./projects/lsst_y1/chains/example2_lsst_y1_theory.modelvector"
     accuracyboost: 1.0
-    integration_accuracy: 0 
+    integration_accuracy: 0
     kmax_boltzmann: 5.0
-    # ------------------------------------------------------------------------
-    # Settings adopted when printing the lsst_y1_theory.modelvector
-    # ------------------------------------------------------------------------
-    #print_datavector: True
-    #print_datavector_file: "./projects/lsst_y1/chains/lsst_y1_theory.modelvector"
-    #accuracyboost: 1.0
-    #integration_accuracy: 1 
-    #kmax_boltzmann: 20.0
 
 params:
   As_1e9:
@@ -197,4 +188,4 @@ sampler:
       w0pwa: -0.9
       w: -0.9
 
-output: ./projects/lsst_y1/chains/EXAMPLE_EVALUATE2
+output: ./projects/lsst_y1/chains/EXAMPLE_EVALUATE3

@@ -22,9 +22,6 @@ params:
     latex: 10^9 A_\mathrm{s})
     drop: true
     renames: A
-  As:
-    value: 'lambda As_1e9: 1e-9 * As_1e9'
-    latex: A_\mathrm{s}
   ns:
     prior:
       min: 0.87
@@ -96,9 +93,13 @@ params:
   # ---------------------------------------------------------------------------------------
   # ------------------------------------- DERIVED PARAMETERS ------------------------------
   # ---------------------------------------------------------------------------------------
-  # WARNING: DO NOT REMOVE omegabh2/omegach2/omegamh2 FROM DERIVED PARAMETERS
+  # WARNING: DO NOT REMOVE omegabh2/omegach2/omegamh2/wa/As/ FROM DERIVED PARAMETERS
+  # WARNING: DO NOT REMOVE THE DROP FLAG FROM omegab/omegam/As_1e9/w0pwa
   # SEE: github.com/CosmoLike/cocoa#warning-warning-warning-weak-lensing-yaml-files-in-cobaya-
   # --------------------------------------------------------------------------------------- 
+  As:
+    value: 'lambda As_1e9: 1e-9 * As_1e9'
+    latex: A_\mathrm{s}
   wa:
     value: 'lambda w0pwa, w: w0pwa - w'
     latex: w_{a,\mathrm{DE}}

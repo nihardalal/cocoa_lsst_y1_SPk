@@ -33,7 +33,11 @@ The option `--depth 1` prevents git from downloading the entire project history.
 One model evaluation:
 
         $(cocoa)(.local) mpirun -n 1 --mca btl tcp,self --bind-to core:overload-allowed --rank-by core --map-by numa:pe=${OMP_NUM_THREADS} cobaya-run ./projects/lsst_y1/EXAMPLE_EVALUATE1.yaml -f
-
+ 
 MCMC:
 
         $(cocoa)(.local) mpirun -n 4 --mca btl tcp,self --bind-to core:overload-allowed --rank-by core --map-by numa:pe=${OMP_NUM_THREADS} cobaya-run ./projects/lsst_y1/EXAMPLE_MCMC1.yaml -f
+
+## Deleting Cosmolike projects <a name="running_cosmolike_projects"></a>
+
+:warning: (**warning**) :warning: Never delete the `lsst_y1` folder from the project folder without running `stop_cocoa` first; otherwise, Cocoa will have ill-defined soft links at `Cocoa/cobaya/cobaya/likelihoods/` , `Cocoa/external_modules/code/` and `Cocoa/external_modules/data/`

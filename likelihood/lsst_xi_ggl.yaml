@@ -3,6 +3,7 @@ data_file: LSST_Y1.dataset
 accuracyboost: 1.0
 samplingboost: 1.0
 integration_accuracy: 0
+kmax_boltzmann: 5.0
 speed: 1
 
 print_intermediate_products: False

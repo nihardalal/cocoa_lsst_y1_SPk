@@ -66,15 +66,6 @@ params:
     proposal: 0.02
     latex: \Omega_\mathrm{m}
     drop: true
-  mnu:
-    prior:
-      min: 0.06
-      max: 0.6
-    ref:
-      dist: norm
-      loc: 0.25
-      scale: 0.1
-    proposal: 0.05
   w0pwa:
     prior:
       min: -5 
@@ -96,6 +87,14 @@ params:
       scale: 0.05
     proposal: 0.05
     latex: w_{0,\mathrm{DE}}
+  mnu:
+    value: 0.06
+  # ---------------------------------------------------------------------------------------
+  # ------------------------------------- DERIVED PARAMETERS ------------------------------
+  # ---------------------------------------------------------------------------------------
+  # WARNING: DO NOT REMOVE omegabh2/omegach2/omegamh2 FROM DERIVED PARAMETERS
+  # SEE: github.com/CosmoLike/cocoa#warning-warning-warning-weak-lensing-yaml-files-in-cobaya-
+  # --------------------------------------------------------------------------------------- 
   wa:
     value: 'lambda w0pwa, w: w0pwa - w'
     latex: w_{a,\mathrm{DE}}
@@ -143,7 +142,7 @@ theory:
     use_renames: True
     extra_args:
       halofit_version: takahashi
-      AccuracyBoost: 1.15
+      AccuracyBoost: 1.05
       lens_potential_accuracy: 1.0
       num_massive_neutrinos: 1
       nnu: 3.046
@@ -154,16 +153,16 @@ theory:
 sampler:
   polychord:
     path: null
-    nlive: 128
-    num_repeats: 3d
+    nlive: 512
+    num_repeats: 5d
     do_clustering: false
-    precision_criterion: 0.05
+    precision_criterion: 0.001
     boost_posterior: 10
     feedback: 2
     blocking:
       - [1,
           [
-            As_1e9, ns, H0, omegab, omegam, mnu, w0pwa, w 
+            As_1e9, ns, H0, omegab, omegam, w0pwa, w 
           ]
         ]
       - [3,

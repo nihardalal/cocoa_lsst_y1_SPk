@@ -173,7 +173,11 @@ sampler:
     # --------------------------------------
     learn_proposal: True
     # Don't learn if convergence better than...
-    learn_proposal_Rminus1_min: 0.03
+    learn_proposal_Rminus1_min: 0.035
+    # Don't learn if convergence is worse than...
+    learn_proposal_Rminus1_max: 200
+    # (even earlier if a param is not in the given covariance matrix)
+    learn_proposal_Rminus1_max_early: 30.
     # --------------------------------------
     # --------------------------------------
     # Convergence and stopping
@@ -199,7 +203,7 @@ sampler:
             As_1e9, ns, H0, omegab, omegam, w0pwa, w 
           ]
         ]
-      - [3,
+      - [4,
           [
             LSST_DZ_S1, LSST_DZ_S2, LSST_DZ_S3, LSST_DZ_S4, LSST_DZ_S5, LSST_A1_1, LSST_A1_2
           ]

@@ -86,6 +86,8 @@ void cpp_initial_setup()
 
   like.high_def_integration = 1;
 
+  //gsl_set_error_handler_off();
+
   spdlog::debug("\x1b[90m{}\x1b[0m: Ends", "initial_setup");
 }
 
@@ -1151,10 +1153,10 @@ std::vector<double> cpp_compute_data_vector_masked()
   {
     for (int nz=0; nz<tomo.ggl_Npowerspectra; nz++)
     {
-      const int zl = ZL(nz);
-      const int zs = ZS(nz);
       for (int i=0; i<like.Ntheta; i++)
       {
+        const int zl = ZL(nz);
+        const int zs = ZS(nz);
         if (cpp_get_mask(start+(like.Ntheta*nz)+i))
         {
           const double theta = like.theta[i];

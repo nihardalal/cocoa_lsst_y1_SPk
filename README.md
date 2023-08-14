@@ -6,14 +6,14 @@ In this tutorial, we assume the user installed Cocoa via the *Conda installation
     
         $ conda activate cocoa
 
-:two: **Step 2 of 6**: go to the project folder (`./cocoa/Cocoa/projects`) and clone the Cosmolike LSST-Y1 project:
+:two: **Step 2 of 6**: go to the `projects` folder and clone the Cosmolike LSST-Y1 project:
     
         $(cocoa) cd ./cocoa/Cocoa/projects
         $(cocoa) git clone --depth 1 git@github.com:CosmoLike/cocoa_lsst_y1.git lsst_y1
 
 The option `--depth 1` prevents git from downloading the entire project history. By convention, the Cosmolike Organization hosts a Cobaya-Cosmolike project named XXX at `CosmoLike/cocoa_XXX`. However, our scripts and YAML files assume the removal of the `cocoa_` prefix when cloning the repository.
  
-:three: **Step 3 of 6**: go back to Cocoa main folder, and activate the private python environment
+:three: **Step 3 of 6**: go back to the Cocoa main folder, and activate the private Python environment
     
         $(cocoa) cd ../
         $(cocoa) source start_cocoa
@@ -28,7 +28,7 @@ The option `--depth 1` prevents git from downloading the entire project history.
     
         $(cocoa)(.local) export OMP_PROC_BIND=close; export OMP_NUM_THREADS=4
         
-:five:  **Step 6 of 6**: run a template YAML file
+:six:  **Step 6 of 6**: run a template YAML file
 
 One model evaluation:
 

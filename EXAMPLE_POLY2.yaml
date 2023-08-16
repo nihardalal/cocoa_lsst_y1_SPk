@@ -63,15 +63,6 @@ params:
     proposal: 0.02
     latex: \Omega_\mathrm{m}
     drop: true
-  mnu:
-    prior:
-      min: 0.06
-      max: 0.6
-    ref:
-      dist: norm
-      loc: 0.25
-      scale: 0.1
-    proposal: 0.05
   w0pwa:
     prior:
       min: -5 
@@ -95,6 +86,9 @@ params:
     latex: w_{0,\mathrm{DE}}
   mnu:
     value: 0.06
+  tau:
+    value: 0.0697186
+    latex: \tau_\mathrm{reio}
   # ---------------------------------------------------------------------------------------
   # ------------------------------------- DERIVED PARAMETERS ------------------------------
   # ---------------------------------------------------------------------------------------

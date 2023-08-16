@@ -3,7 +3,7 @@
 #SBATCH --job-name=RY1_P1
 #SBATCH --output=RY1_P1-%j.out 
 #SBATCH --nodes=1
-#SBATCH --ntasks=30
+#SBATCH --ntasks=28
 #SBATCH --ntasks-per-socket=14
 #SBATCH --ntasks-per-node=28
 #SBATCH --cpus-per-task=3

@@ -1,6 +1,6 @@
 timing: True
-debug: True
-stop_at_error: True
+debug: False
+stop_at_error: False
 
 likelihood:
   lsst_y1.lsst_3x2pt:
@@ -164,7 +164,7 @@ sampler:
   polychord:
     path: null
     nlive: 128
-    num_repeats: 3d
+    num_repeats: 2d
     do_clustering: false
     precision_criterion: 0.001
     boost_posterior: 10

@@ -5,8 +5,9 @@ stop_at_error: False
 likelihood:
   lsst_y1.lsst_3x2pt:
     path: ./external_modules/data/lsst_y1
-    print_datavector: False
-    print_datavector_file: "./projects/lsst_y1/chains/example2_lsst_y1_theory.modelvector"
+    accuracyboost: 1.0
+    integration_accuracy: 0
+    kmax_boltzmann: 5.0
 
 params:
   As_1e9:
@@ -143,7 +144,7 @@ theory:
     use_renames: True
     extra_args:
       halofit_version: takahashi
-      AccuracyBoost: 1.15
+      AccuracyBoost: 1.1
       lens_potential_accuracy: 1.0
       num_massive_neutrinos: 1
       nnu: 3.046

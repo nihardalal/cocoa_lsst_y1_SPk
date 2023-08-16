@@ -1,16 +1,20 @@
 #!/bin/bash
 
-#SBATCH --job-name=LSSTY1MC
-#SBATCH --output=LSSTY1MC-%A_%a.out
+#SBATCH --job-name=RY1_MC2
+#SBATCH --output=RY1_MC2-%A_%a.out
 #SBATCH --nodes=1
 #SBATCH --ntasks=4
-#SBATCH --cpus-per-task=7
-#SBATCH --partition=extended-28core
-#SBATCH -t 160:00:00
+#SBATCH --ntasks-per-node=4
+#SBATCH --ntasks-per-socket=2
+#SBATCH --cpus-per-task=8
+#SBATCH --time=120:00:00
+#SBATCH --partition=high_priority
+#SBATCH --qos=user_qos_timeifler
+#SBATCH --account=timeifler
 
 # Clear the environment from any previously loaded modules
 module purge > /dev/null 2>&1
-source ~/.bashrc 
+module load anaconda
 conda init bash
 source ~/.bashrc 
 
@@ -19,12 +23,9 @@ echo Time is `date`
 echo Directory is `pwd`
 echo Slurm job NAME is $SLURM_JOB_NAME
 echo Slurm job ID is $SLURM_JOBID
-echo Number of MPI cores is $SLURM_NTASKS
-echo Number of OpenMP cores is $SLURM_CPUS_PER_TASK
-echo SLURM DIR is $SLURM_SUBMIT_DIR
 
 cd $SLURM_SUBMIT_DIR
-conda activate cocoa
+conda activate cocoapy38
 source start_cocoa
 
 echo Cocoa Conda environment Activated
@@ -36,4 +37,4 @@ else
   export OMP_NUM_THREADS=1
 fi
 
-mpirun -n ${SLURM_NTASKS} --oversubscribe --mca btl tcp,self --bind-to core:overload-allowed --map-by node:pe=${OMP_NUM_THREADS} cobaya-run ./projects/lsst_y1/EXAMPLE_MCMC_${SLURM_ARRAY_TASK_ID}.yaml -r
+mpirun -n ${SLURM_NTASKS} --oversubscribe --mca btl tcp,self --bind-to core --map-by numa:pe=${OMP_NUM_THREADS} cobaya-run ./projects/lsst_y1/EXAMPLE_MCMC${SLURM_ARRAY_TASK_ID}.yaml -r

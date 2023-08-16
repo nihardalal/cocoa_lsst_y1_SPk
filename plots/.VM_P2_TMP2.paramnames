@@ -1,0 +1,49 @@
+As_1e9	10^9 A_\mathrm{s})
+ns	n_\mathrm{s}
+H0	H_0
+omegab	\Omega_\mathrm{b}
+omegam	\Omega_\mathrm{m}
+w0pwa	w_{0,\mathrm{DE}}+w_{a,\mathrm{DE}}
+w	w_{0,\mathrm{DE}}
+LSST_DZ_L1	\Delta z_\mathrm{l,LSST}^1
+LSST_DZ_L2	\Delta z_\mathrm{l,LSST}^2
+LSST_DZ_L3	\Delta z_\mathrm{l,LSST}^3
+LSST_DZ_L4	\Delta z_\mathrm{l,LSST}^4
+LSST_DZ_L5	\Delta z_\mathrm{l,LSST}^5
+LSST_B1_1	b_\mathrm{1-LSST}^1
+LSST_B1_2	b_\mathrm{1-LSST}^2
+LSST_B1_3	b_\mathrm{1-LSST}^3
+LSST_B1_4	b_\mathrm{1-LSST}^4
+LSST_B1_5	b_\mathrm{1-LSST}^5
+LSST_DZ_S1	\Delta z_\mathrm{s,LSST}^1
+LSST_DZ_S2	\Delta z_\mathrm{s,LSST}^2
+LSST_DZ_S3	\Delta z_\mathrm{s,LSST}^3
+LSST_DZ_S4	\Delta z_\mathrm{s,LSST}^4
+LSST_DZ_S5	\Delta z_\mathrm{s,LSST}^5
+LSST_A1_1	A_\mathrm{1-IA,LSST}^1
+LSST_A1_2	A_\mathrm{1-IA,LSST}^2
+LSST_M1	m_\mathrm{LSST}^1
+LSST_M2	m_\mathrm{LSST}^2
+LSST_M3	m_\mathrm{LSST}^3
+LSST_M4	m_\mathrm{LSST}^4
+LSST_M5	m_\mathrm{LSST}^5
+As*	A_\mathrm{s}
+wa*	w_{a,\mathrm{DE}}
+omegabh2*	\Omega_\mathrm{b} h^2
+omegach2*	\Omega_\mathrm{c} h^2
+omegal*	\Omega_\Lambda
+omegamh2*	\Omega_\mathrm{m} h^2
+sigma8*	\sigma_8
+s8h5*	\sigma_8/h^{0.5}
+s8omegamp5*	\sigma_8 \Omega_\mathrm{m}^{0.5}
+s8omegamp25*	\sigma_8 \Omega_\mathrm{m}^{0.25}
+age*	{\rm{Age}}/\mathrm{Gyr}
+rdrag*	r_\mathrm{drag}
+yheused*	Y_P^\mathrm{BBN}
+omegan*	\Omega_\mathrm{\\nu}
+minuslogprior*	-\log\pi
+minuslogprior__0*	-\log\pi_\mathrm{0}
+chi2*	\chi^2
+chi2__lsst_y1.lsst_3x2pt*	\chi^2_\mathrm{lsst\ y1.lsst\ 3x2pt}
+gamma*	{\Omega_m h}
+SS8*	{S_8}

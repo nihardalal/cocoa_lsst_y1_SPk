@@ -152,7 +152,23 @@ params:
   omegan:
     derived: 'lambda omegan2, H0: omegan2/((H0/100)**2)'
     latex: \Omega_\mathrm{\\nu}
-
+# FIXED LSST PARAMETERS
+  LSST_BMAG_1:
+    value: -0.898
+    latex: b_\mathrm{BMAG-LSST}^1
+  LSST_BMAG_2:
+    value: -0.659
+    latex: b_\mathrm{BMAG-LSST}^2
+  LSST_BMAG_3:
+    value: -0.403
+    latex: b_\mathrm{BMAG-LSST}^3
+  LSST_BMAG_4:
+    value: -0.0704
+    latex: b_\mathrm{BMAG-LSST}^4
+  LSST_BMAG_5:
+    value: 0.416
+    latex: b_\mathrm{BMAG-LSST}^5
+    
 theory:
   camb:
     path: ./external_modules/code/CAMB

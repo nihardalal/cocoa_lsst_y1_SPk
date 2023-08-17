@@ -1,6 +1,6 @@
 timing: False
-debug: True
-stop_at_error: True
+debug: False
+stop_at_error: False
 
 likelihood:
   lsst_y1.lsst_cosmic_shear:

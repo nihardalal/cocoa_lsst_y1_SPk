@@ -1,6 +1,6 @@
-timing: True
+timing: False
 debug: False
-stop_at_error: True
+stop_at_error: False
 
 likelihood:
   lsst_y1.lsst_3x2pt:

@@ -27,7 +27,7 @@ matplotlib.rcParams['legend.labelspacing'] = 0.77
 matplotlib.rcParams['savefig.bbox'] = 'tight'
 matplotlib.rcParams['savefig.format'] = 'pdf'
 
-parameter = [u'omegam',u'sigma8', u'As_1e9', u'ns', u'SS8', u'omegab', u'H0', u'LSST_A1_1', u'LSST_A1_2', u'chi2']
+parameter = [u'omegam',u'sigma8', u'As_1e9', u'ns', u'SS8', u'omegab', u'H0', u'w', u'LSST_A1_1', u'LSST_A1_2', u'chi2']
 chaindir=os.getcwd()
 
 analysissettings={'smooth_scale_1D':0.35, 'smooth_scale_2D':0.3,'ignore_rows': u'0.5',
@@ -37,7 +37,7 @@ analysissettings2={'smooth_scale_1D':0.35,'smooth_scale_2D':0.3,'ignore_rows': u
 'range_confidence' : u'0.005'}
 
 root_chains = (
-  'EXAMPLE_MCMC3',
+  'EXAMPLE_MCMC2',
   'EXAMPLE_MCMC4',
 )
 
@@ -59,7 +59,7 @@ samples.saveAsText(chaindir + '/.VM_P2_TMP2')
 
 #GET DIST PLOT SETUP
 g=gplot.getSubplotPlotter(chain_dir=chaindir,
-  analysis_settings=analysissettings2,width_inch=7.5)
+  analysis_settings=analysissettings2,width_inch=8.5)
 g.settings.axis_tick_x_rotation=65
 g.settings.lw_contour = 1.2
 g.settings.legend_rect_border = False
@@ -87,7 +87,7 @@ contour_lws=[1.0,1.5,1.5,1.0],
 filled=[True,False,False,True],
 shaded=False,
 legend_labels=[
-'LSST-Y1 Cosmic Shear (no fast/slow)',
+'LSST-Y1 3x2pt',
 'LSST-Y1 3x2pt (no fast/slow)'
 ],
 legend_loc=(0.48, 0.80))

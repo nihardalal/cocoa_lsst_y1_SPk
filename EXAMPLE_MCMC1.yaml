@@ -1,6 +1,6 @@
-timing: True
-debug: False
-stop_at_error: False
+timing: False
+debug: True
+stop_at_error: True
 
 likelihood:
   lsst_y1.lsst_cosmic_shear:
@@ -65,9 +65,9 @@ params:
     ref:
       dist: norm
       loc: 2.1
-      scale: 0.65
-    proposal: 0.4
-    latex: 10^9 A_\mathrm{s})
+      scale: 0.1
+    proposal: 0.1
+    latex: 10^9 A_\mathrm{s}
     drop: true
     renames: A
   ns:
@@ -77,8 +77,8 @@ params:
     ref:
       dist: norm
       loc: 0.96605
-      scale: 0.01
-    proposal: 0.01
+      scale: 0.005
+    proposal: 0.005
     latex: n_\mathrm{s}
   H0:
     prior:
@@ -87,8 +87,8 @@ params:
     ref:
       dist: norm
       loc: 67.32
-      scale: 5
-    proposal: 3
+      scale: 2
+    proposal: 1
     latex: H_0
   omegab:
     prior:
@@ -97,8 +97,8 @@ params:
     ref:
       dist: norm
       loc: 0.0495
-      scale: 0.004
-    proposal: 0.004
+      scale: 0.0025
+    proposal: 0.0025
     latex: \Omega_\mathrm{b}
     drop: true
   omegam:
@@ -108,8 +108,8 @@ params:
     ref:
       dist: norm
       loc: 0.316
-      scale: 0.02
-    proposal: 0.02
+      scale: 0.01
+    proposal: 0.01
     latex: \Omega_\mathrm{m}
     drop: true
   w:
@@ -119,8 +119,8 @@ params:
     ref:
       dist: norm
       loc: -0.99
-      scale: 0.05
-    proposal: 0.05
+      scale: 0.02
+    proposal: 0.02
     latex: w_{0,\mathrm{DE}}
   mnu:
     value: 0.06

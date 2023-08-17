@@ -218,7 +218,8 @@ class _cosmolike_prototype_base(DataSetLikelihood):
   # ------------------------------------------------------------------------
 
   def compute_logp(self, datavector):
-    return -0.5 * ci.compute_chi2(datavector)
+    tmp = ci.compute_chi2(datavector)
+    return -0.5 * tmp
 
   # ------------------------------------------------------------------------
   # ------------------------------------------------------------------------

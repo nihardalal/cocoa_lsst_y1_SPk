@@ -28,7 +28,7 @@ matplotlib.rcParams['savefig.bbox'] = 'tight'
 matplotlib.rcParams['savefig.format'] = 'pdf'
 
 
-parameter = [u'LSST_DZ_S1', u'LSST_DZ_S2', u'LSST_DZ_S3', u'LSST_DZ_S4', u'LSST_DZ_S5', u'LSST_A1_1', u'LSST_A1_2', u'chi2']
+parameter = [u'LSST_M1', u'LSST_M2', u'LSST_M3', u'LSST_M4', u'LSST_M5', u'LSST_A1_1', u'LSST_A1_2', u'chi2']
 chaindir=os.getcwd()
 
 analysissettings={'smooth_scale_1D':0.35, 'smooth_scale_2D':0.3,'ignore_rows': u'0.5',
@@ -38,10 +38,9 @@ analysissettings2={'smooth_scale_1D':0.35,'smooth_scale_2D':0.3,'ignore_rows': u
 'range_confidence' : u'0.005'}
 
 root_chains = (
-  'EXAMPLE_MCMC1',
-  'EXAMPLE_MCMC3',
+  'EXAMPLE_MCMC2',
+  'EXAMPLE_MCMC4',
 )
-
 
 # --------------------------------------------------------------------------------
 samples=loadMCSamples(chaindir + '/../chains/' + root_chains[0],settings=analysissettings)
@@ -51,7 +50,7 @@ samples.addDerived(p.s8omegamp5/0.5477225575,name='SS8',label='{S_8}')
 samples.addDerived(10*p.omegam,name='om10',label='{10 \\Omega_m}')
 samples.addDerived(100*p.omegab,name='ob100',label='{100 \\Omega_b}')
 samples.addDerived(10*p.ns,name='ns10',label='{10 n_s}')
-samples.saveAsText(chaindir + '/.VM_P2_TMP1')
+samples.saveAsText(chaindir + '/.VM_P7_TMP1')
 # --------------------------------------------------------------------------------
 samples=loadMCSamples(chaindir + '/../chains/' + root_chains[1],settings=analysissettings)
 p = samples.getParams()
@@ -60,7 +59,7 @@ samples.addDerived(p.s8omegamp5/0.5477225575,name='SS8',label='{S_8}')
 samples.addDerived(10*p.omegam,name='om10',label='{10 \\Omega_m}')
 samples.addDerived(100*p.omegab,name='ob100',label='{100 \\Omega_b}')
 samples.addDerived(10*p.ns,name='ns10',label='{10 n_s}')
-samples.saveAsText(chaindir + '/.VM_P2_TMP2')
+samples.saveAsText(chaindir + '/.VM_P7_TMP2')
 # --------------------------------------------------------------------------------
 
 
@@ -80,7 +79,7 @@ g.legend_labels=False
 print(chaindir)
 
 param_3d = None
-g.triangle_plot([chaindir + '/.VM_P2_TMP1',chaindir + '/.VM_P2_TMP2'],
+g.triangle_plot([chaindir + '/.VM_P7_TMP1',chaindir + '/.VM_P7_TMP2'],
 parameter,
 plot_3d_with_param=param_3d,line_args=[
 {'lw': 1.2,'ls': 'solid', 'color':'lightcoral'},

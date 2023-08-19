@@ -1,15 +1,16 @@
 #!/bin/bash
 
-#SBATCH --job-name=RY1_MC1
-#SBATCH --output=RY1_MC1-%A_%a.out
+#SBATCH --job-name=RY1_MIN1
+#SBATCH --output=RY1_MIN1-%A_%a.out
 #SBATCH --nodes=1
-#SBATCH --ntasks=4
-#SBATCH --ntasks-per-node=4
-#SBATCH --ntasks-per-socket=2
-#SBATCH --cpus-per-task=8
-#SBATCH --time=120:00:00
+#SBATCH --ntasks=28
+#SBATCH --ntasks-per-socket=14
+#SBATCH --ntasks-per-node=28
+#SBATCH --cpus-per-task=3
+#SBATCH --time=50:00:00
 #SBATCH --partition=standard
 #SBATCH --account=cosmolike
+#SBATCH --exclusive
 
 # Clear the environment from any previously loaded modules
 module purge > /dev/null 2>&1
@@ -33,4 +34,4 @@ else
   export OMP_NUM_THREADS=1
 fi
 
-mpirun -n ${SLURM_NTASKS} --oversubscribe --mca btl vader,tcp,self --bind-to core:overload-allowed --map-by numa:pe=${OMP_NUM_THREADS} cobaya-run ./projects/lsst_y1/EXAMPLE_MCMC${SLURM_ARRAY_TASK_ID}.yaml -r
+mpirun -n ${SLURM_NTASKS} --oversubscribe --mca btl vader,tcp,self --bind-to core:overload-allowed --map-by numa:pe=${OMP_NUM_THREADS} cobaya-run ./projects/lsst_y1/EXAMPLE_MIN${SLURM_ARRAY_TASK_ID}.yaml -f

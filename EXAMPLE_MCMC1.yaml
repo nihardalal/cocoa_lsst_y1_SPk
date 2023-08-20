@@ -8,9 +8,11 @@ likelihood:
     accuracyboost: 1.0
     integration_accuracy: 0
     kmax_boltzmann: 5.0
+    # 1 EE2, 2 Halofit
+    non_linear_emul: 2
 
 # IN THIS EXAMPLE, WE ASSUMED THE DATA VECTOR WERE CREATED W/ THE FOLLOWING 
-# PARAMETERS
+# PARAMETERS (WE USED HALOFIT TO CREATE THE DATAVECTOR)
 #    As_1e9: 2.1
 #    ns: 0.96605
 #    H0: 67.32

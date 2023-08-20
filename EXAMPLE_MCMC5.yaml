@@ -2,6 +2,9 @@ timing: False
 debug: False
 stop_at_error: False
 
+# THIS EXAMPLE_MCMC5 RUNS A CHAIN WITH EUCLID EMULATOR 2 NONLINEAR PS
+# THE PRIORS MATCH THE EUCLID EMULATOR 2 PAPER
+
 likelihood:
   lsst_y1.lsst_cosmic_shear:
     path: ./external_modules/data/lsst_y1

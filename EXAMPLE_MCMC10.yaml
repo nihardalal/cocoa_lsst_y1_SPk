@@ -2,8 +2,7 @@ timing: False
 debug: False
 stop_at_error: False
 
-# THIS EXAMPLE_MCMC8 IS SIMILAR TO EXAMPLE_MCMC2, EXCEPT THAT IT ASSUMES 
-# OPTIMISTIC PRIORS FOR IA NLA MODEL PARAMETERS
+# THIS EXAMPLE_MCMC10 IS SIMILAR TO EXAMPLE_MCMC2, EXCEPT THAT IT ASSUMES TEMPERATURE = 5
 
 likelihood:
   lsst_y1.lsst_3x2pt:
@@ -234,25 +233,23 @@ params:
   # Intrinsic alignment
   LSST_A1_1:
     prior:
-      dist: norm
-      loc: 0.606102
-      scale: 0.019
+      min: -5
+      max:  5
     ref:
       dist: norm
-      loc: 0.6
-      scale: 0.025
-    proposal: 0.025
+      loc: 0.7
+      scale: 0.5
+    proposal: 0.5
     latex: A_\mathrm{1-IA,LSST}^1
   LSST_A1_2:
     prior:
-      dist: norm
-      loc: -1.51541
-      scale: 0.145
+      min: -5
+      max:  5
     ref:
       dist: norm
-      loc: -1.6
-      scale: 0.15
-    proposal: 0.15
+      loc: -1.7
+      scale: 0.5
+    proposal: 0.5
   # Shear calibration parameters
   LSST_M1:
     prior:
@@ -440,6 +437,7 @@ sampler:
     # - matrix: remember to set `covmat_params` to the parameters in the matrix
     covmat: ./projects/lsst_y1/EXAMPLE_MCMC2.covmat
     covmat_params:
+    temperature: 5
     # --------------------------------------
     # --------------------------------------
     # Proposal covariance matrix learning
@@ -505,4 +503,4 @@ sampler:
     # ---------------------------------------------------------------------
     Rminus1_single_split: 4
 
-output: ./projects/lsst_y1/chains/EXAMPLE_MCMC8
+output: ./projects/lsst_y1/chains/EXAMPLE_MCMC10

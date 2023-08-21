@@ -2,6 +2,8 @@ timing: False
 debug: False
 stop_at_error: False
 
+# THIS EXAMPLE_MCMC4 RUNS A CHAIN EQUALS TO EXAMPLE_MCMC2 BUT WITHOUT SLOW/FAST DECOMPOSITION
+
 likelihood:
   lsst_y1.lsst_3x2pt:
     path: ./external_modules/data/lsst_y1

@@ -18,3 +18,15 @@ python plot7.py > ${OUTPUT_PIP_1} 2> ${OUTPUT_PIP_2} &
 python plot8.py > ${OUTPUT_PIP_1} 2> ${OUTPUT_PIP_2} &
 
 python plot9.py > ${OUTPUT_PIP_1} 2> ${OUTPUT_PIP_2} &
+
+python plot10.py > ${OUTPUT_PIP_1} 2> ${OUTPUT_PIP_2} &
+
+python plot11.py > ${OUTPUT_PIP_1} 2> ${OUTPUT_PIP_2} &
+
+python plot12.py > ${OUTPUT_PIP_1} 2> ${OUTPUT_PIP_2} &
+
+python plot13.py > ${OUTPUT_PIP_1} 2> ${OUTPUT_PIP_2} &
+
+python plot14.py > ${OUTPUT_PIP_1} 2> ${OUTPUT_PIP_2} &
+
+python plot15.py > ${OUTPUT_PIP_1} 2> ${OUTPUT_PIP_2} &

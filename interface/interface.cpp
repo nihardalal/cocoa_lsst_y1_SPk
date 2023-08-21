@@ -346,10 +346,10 @@ void cpp_init_lens_sample(std::string multihisto_file, const int Ntomo, const do
   tomo.clustering_Nbin = Ntomo;
   tomo.clustering_Npowerspectra = tomo.clustering_Nbin;
 
-  spdlog::debug("\x1b[90m{}\x1b[0m: {} = {} selected.", "init_lens_sample",
+  spdlog::info("\x1b[90m{}\x1b[0m: {} = {} selected.", "init_lens_sample",
     "clustering_REDSHIFT_FILE", multihisto_file);
 
-  spdlog::debug("\x1b[90m{}\x1b[0m: {} = {} selected.", "init_lens_sample",
+  spdlog::info("\x1b[90m{}\x1b[0m: {} = {} selected.", "init_lens_sample",
     "clustering_Nbin", Ntomo);
 
   if (ggl_cut > 0)
@@ -361,7 +361,7 @@ void cpp_init_lens_sample(std::string multihisto_file, const int Ntomo, const do
     survey.ggl_overlap_cut = 0.0;
   }
 
-  spdlog::debug("\x1b[90m{}\x1b[0m: {} = {} selected.", "init_lens_sample",
+  spdlog::info("\x1b[90m{}\x1b[0m: {} = {} selected.", "init_lens_sample",
     "survey.ggl_overlap_cut", survey.ggl_overlap_cut);
 
   pf_photoz(0.1, 0);
@@ -372,13 +372,27 @@ void cpp_init_lens_sample(std::string multihisto_file, const int Ntomo, const do
       for (int j = 0; j < tomo.shear_Nbin; j++)
       {
         n += test_zoverlap(i, j);
+        if (test_zoverlap(i, j))
+        {
+          spdlog::info("\x1b[90m{}\x1b[0m: ggl({},{}) is a bin w/ efficiency = {:.10f}", 
+            "init_lens_sample", i, j, ggl_efficiency(i, j));
+        }
       }
     }
     tomo.ggl_Npowerspectra = n;
 
-    spdlog::debug("\x1b[90m{}\x1b[0m: tomo.ggl_Npowerspectra = {}",
+    spdlog::info("\x1b[90m{}\x1b[0m: tomo.ggl_Npowerspectra = {}",
       "init_lens_sample", tomo.ggl_Npowerspectra);
   }
+
+  for (int i=0; i<tomo.shear_Nbin; i++)
+  {
+    nuisance.bias_zphot_clustering[i] = 0.0;
+
+    spdlog::info("\x1b[90m{}\x1b[0m: bin {} - {} = {}.",
+      "init_source_sample", i, "<z_L>", zmean(i));
+  }
+
   spdlog::debug("\x1b[90m{}\x1b[0m: Ends", "init_lens_sample");
 }
 
@@ -413,7 +427,7 @@ void cpp_init_source_sample(std::string multihisto_file, const int Ntomo)
   tomo.shear_Nbin = Ntomo;
   tomo.shear_Npowerspectra = tomo.shear_Nbin * (tomo.shear_Nbin + 1) / 2;
 
-  spdlog::debug("\x1b[90m{}\x1b[0m: tomo.shear_Npowerspectra = {}", 
+  spdlog::info("\x1b[90m{}\x1b[0m: tomo.shear_Npowerspectra = {}", 
     "init_source_sample", tomo.shear_Npowerspectra);
 
   for (int i=0; i<tomo.shear_Nbin; i++)
@@ -424,10 +438,10 @@ void cpp_init_source_sample(std::string multihisto_file, const int Ntomo)
       "init_source_sample", i, "<z_s>", zmean_source(i));
   }
 
-  spdlog::debug("\x1b[90m{}\x1b[0m: {} = {} selected.", "init_source_sample",
+  spdlog::info("\x1b[90m{}\x1b[0m: {} = {} selected.", "init_source_sample",
     "shear_REDSHIFT_FILE", multihisto_file);
 
-  spdlog::debug("\x1b[90m{}\x1b[0m: {} = {} selected.", "init_source_sample",
+  spdlog::info("\x1b[90m{}\x1b[0m: {} = {} selected.", "init_source_sample",
     "shear_Nbin", Ntomo);
 
   spdlog::debug("\x1b[90m{}\x1b[0m: Ends", "init_source_sample");

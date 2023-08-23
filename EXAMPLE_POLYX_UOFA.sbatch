@@ -22,6 +22,8 @@ echo Time is `date`
 echo Directory is `pwd`
 echo Slurm job NAME is $SLURM_JOB_NAME
 echo Slurm job ID is $SLURM_JOBID
+echo Number of task is $SLURM_NTASKS
+echo Number of cpus per task is $SLURM_CPUS_PER_TASK
 
 cd $SLURM_SUBMIT_DIR
 conda activate cocoapy38

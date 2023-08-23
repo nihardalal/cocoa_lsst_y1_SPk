@@ -2,18 +2,16 @@
 
 #SBATCH --job-name=RY1_MC1
 #SBATCH --output=RY1_MC1-%A_%a.out
+#SBATCH -e RY1_MC1-%A_%a.out.err
 #SBATCH --nodes=1
 #SBATCH --ntasks=4
-#SBATCH --ntasks-per-node=4
-#SBATCH --ntasks-per-socket=2
-#SBATCH --cpus-per-task=8
-#SBATCH --time=120:00:00
-#SBATCH --partition=standard
-#SBATCH --account=cosmolike
+#SBATCH --cpus-per-task=7
+#SBATCH --partition=extended-28core
+#SBATCH --time=135:00:00
 
 # Clear the environment from any previously loaded modules
 module purge > /dev/null 2>&1
-source ~/.bashrc 
+module load slurm
 
 echo Running on host `hostname`
 echo Time is `date`
@@ -34,4 +32,4 @@ else
   export OMP_NUM_THREADS=1
 fi
 
-mpirun -n ${SLURM_NTASKS} --oversubscribe --mca btl vader,tcp,self --bind-to core:overload-allowed --map-by numa:pe=${OMP_NUM_THREADS} cobaya-run ./projects/lsst_y1/EXAMPLE_MCMC${SLURM_ARRAY_TASK_ID}.yaml -r
+$CONDA_PREFIX/bin/mpirun -n ${SLURM_NTASKS} --oversubscribe --mca btl vader,tcp,self --bind-to core:overload-allowed --map-by numa:pe=${OMP_NUM_THREADS} cobaya-run ./projects/lsst_y1/EXAMPLE_MCMC${SLURM_ARRAY_TASK_ID}.yaml -r

@@ -2,9 +2,6 @@ timing: False
 debug: False
 stop_at_error: False
 
-# THIS EXAMPLE_MCMC5 RUNS A CHAIN WITH EUCLID EMULATOR 2 NONLINEAR PS
-# THE PRIORS MATCH THE EUCLID EMULATOR 2 PAPER 
-
 likelihood:
   lsst_y1.lsst_3x2pt:
     path: ./external_modules/data/lsst_y1
@@ -414,7 +411,23 @@ params:
       scale: 0.1
     proposal: 0.1
     latex: b_\mathrm{1-LSST}^5
-
+# FIXED LSST PARAMETERS
+  LSST_BMAG_1:
+    value: 0.0
+    latex: b_\mathrm{BMAG-LSST}^1
+  LSST_BMAG_2:
+    value: 0.0
+    latex: b_\mathrm{BMAG-LSST}^2
+  LSST_BMAG_3:
+    value: 0.0
+    latex: b_\mathrm{BMAG-LSST}^3
+  LSST_BMAG_4:
+    value: 0.0
+    latex: b_\mathrm{BMAG-LSST}^4
+  LSST_BMAG_5:
+    value: 0.0
+    latex: b_\mathrm{BMAG-LSST}^5
+    
 theory:
   camb:
     path: ./external_modules/code/CAMB

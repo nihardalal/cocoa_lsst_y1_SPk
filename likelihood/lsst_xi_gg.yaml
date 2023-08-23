@@ -1,6 +1,5 @@
 path: null
-data_file: LSST_Y1_M1_GGLOLAP0.05.dataset
-accuracyboost: 1.0
+data_file: LSST_Y1_M1.dataset
 samplingboost: 1.0
 integration_accuracy: 0
 kmax_boltzmann: 5.0

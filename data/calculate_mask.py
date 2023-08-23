@@ -7,7 +7,7 @@ ggl_efficiency_cut = [0.05]
 
 #VM INPUT BEGINS ---------------------------------------------------------------
 for Year in [1]:
-  for mask_choice in [1,2,3,4]:
+  for mask_choice in [1,2,3,4,5]:
     if (mask_choice == 1):
       # LSST_YX_M1.mask  (lmax = 3000) on CS -----------------------------------
       # lmax \times \theta_min corresponds to the first zero of the Bessel 𝐽0/4
@@ -15,19 +15,24 @@ for Year in [1]:
       # J0 first zero is 2.4048, J4 first zero is 6.3802
       # For theta = 1arc_min, lmax * theta_min = 0.87
       ξp_CUTOFF = 2.756  # cutoff scale in arcminutes
-      ξm_CUTOFF = 8.6955  # cutoff scale in arcminutes
+      ξm_CUTOFF = 8.6955 # cutoff scale in arcminutes
       gc_CUTOFF = 21     # Galaxy clustering cutoff in Mpc/h
     elif (mask_choice == 2):
       # LSST_YX_M2.mask  (lmax = 1500) on CS -----------------------------------
       ξp_CUTOFF = 5.512  # cutoff scale in arcminutes
-      ξm_CUTOFF = 17.391  # cutoff scale in arcminutes
+      ξm_CUTOFF = 17.391 # cutoff scale in arcminutes
       gc_CUTOFF = 21     # Galaxy clustering cutoff in Mpc/h
     elif (mask_choice == 3):
       # LSST_YX_M3.mask  (lmax = 750) on CS ------------------------------------
-      ξp_CUTOFF = 11.024 # cutoff scale in arcminutes
+      ξp_CUTOFF = 11.024  # cutoff scale in arcminutes
       ξm_CUTOFF = 34.782 # cutoff scale in arcminutes
       gc_CUTOFF = 21     # Galaxy clustering cutoff in Mpc/h
     elif (mask_choice == 4):
+      # LSST_YX_M3.mask  (lmax = 375) on CS ------------------------------------
+      ξp_CUTOFF = 22.048 # cutoff scale in arcminutes
+      ξm_CUTOFF = 69.564 # cutoff scale in arcminutes
+      gc_CUTOFF = 21     # Galaxy clustering cutoff in Mpc/h
+    elif (mask_choice == 5):
       # LSST_YX_M4.mask  all ones ---------------------------------------------
       ξp_CUTOFF = 0 # cutoff scale in arcminutes
       ξm_CUTOFF = 0 # cutoff scale in arcminutes

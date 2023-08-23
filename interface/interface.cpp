@@ -301,10 +301,10 @@ const double theta_max_arcmin)
     like.theta[i] = x * (std::pow(thetamax, 3) - std::pow(thetamin, 3)) /
       (thetamax*thetamax - thetamin*thetamin);
 
-    spdlog::debug(
+    spdlog::info(
       "\x1b[90m{}\x1b[0m: Bin {:d} - {} = {:.4e}, {} = {:.4e} and {} = {:.4e}",
-      "init_binning", i, "theta_min [rad]", thetamin, "theta [rad]",
-      like.theta[i], "theta_max [rad]", thetamax);
+      "init_binning", i, "theta_min [arcmin]", thetamin/2.90888208665721580e-4, "theta [arcmin]",
+      like.theta[i]/2.90888208665721580e-4, "theta_max [arcmin]", thetamax/2.90888208665721580e-4);
   }
 
   spdlog::debug("\x1b[90m{}\x1b[0m: Ends", "init_binning");

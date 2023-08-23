@@ -1,6 +1,7 @@
 import numpy as np
 import os
 from astropy.cosmology import FlatLambdaCDM
+import math as mt
 
 #VM code adapted from Supranta's Python script
 ggl_efficiency_cut = [0.05]
@@ -47,7 +48,20 @@ for Year in [1]:
     N_SRC  = 5  # Number of source tomographic bins
     N_XI_PS = int(N_SRC * (N_SRC + 1) / 2) 
     N_XI    = int(N_XI_PS * N_ANG_BINS)
-    theta = np.logspace(np.log10(THETA_MIN), np.log10(THETA_MAX), N_ANG_BINS+1)
+    
+
+    # COMPUTE SHEAR SCALE CUTS
+    vtmin = THETA_MIN * 2.90888208665721580e-4;
+    vtmax = THETA_MAX * 2.90888208665721580e-4;
+    logdt = (mt.log(vtmax) - mt.log(vtmin))/N_ANG_BINS;
+    theta = np.zeros(N_ANG_BINS+1)
+
+    for i in range(N_ANG_BINS):
+      tmin = mt.exp(mt.log(vtmin) + (i + 0.0) * logdt);
+      tmax = mt.exp(mt.log(vtmin) + (i + 1.0) * logdt);
+      x = 2./ 3.
+      theta[i] = x * (tmax**3 - tmin**3) / (tmax**2- tmin**2)
+      theta[i] = theta[i]/2.90888208665721580e-4
 
     cosmo = FlatLambdaCDM(H0=100, Om0=0.3)
     def ang_cut(z):

@@ -37,7 +37,7 @@ for Year in [1]:
       # LSST_YX_M3.mask  ------------------------------------
       ξp_CUTOFF = 44.096  # cutoff scale in arcminutes
       ξm_CUTOFF = 139.128 # cutoff scale in arcminutes
-      gc_CUTOFF = 21     # Galaxy clustering cutoff in Mpc/h
+      gc_CUTOFF = 21      # Galaxy clustering cutoff in Mpc/h
     elif (mask_choice == 6):
       # LSST_YX_M6.mask  all ones ---------------------------------------------
       ξp_CUTOFF = 0 # cutoff scale in arcminutes

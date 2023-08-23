@@ -8,7 +8,7 @@ ggl_efficiency_cut = [0.05]
 
 #VM INPUT BEGINS ---------------------------------------------------------------
 for Year in [1]:
-  for mask_choice in [1,2,3,4,5]:
+  for mask_choice in [1,2,3,4,5,6]:
     if (mask_choice == 1):
       # LSST_YX_M1.mask  (lmax = 3000) on CS -----------------------------------
       # lmax \times \theta_min corresponds to the first zero of the Bessel 𝐽0/4
@@ -19,22 +19,27 @@ for Year in [1]:
       ξm_CUTOFF = 8.6955 # cutoff scale in arcminutes
       gc_CUTOFF = 21     # Galaxy clustering cutoff in Mpc/h
     elif (mask_choice == 2):
-      # LSST_YX_M2.mask  (lmax = 1500) on CS -----------------------------------
+      # LSST_YX_M2.mask  -----------------------------------
       ξp_CUTOFF = 5.512  # cutoff scale in arcminutes
       ξm_CUTOFF = 17.391 # cutoff scale in arcminutes
       gc_CUTOFF = 21     # Galaxy clustering cutoff in Mpc/h
     elif (mask_choice == 3):
-      # LSST_YX_M3.mask  (lmax = 750) on CS ------------------------------------
+      # LSST_YX_M3.mask  ------------------------------------
       ξp_CUTOFF = 11.024  # cutoff scale in arcminutes
       ξm_CUTOFF = 34.782 # cutoff scale in arcminutes
       gc_CUTOFF = 21     # Galaxy clustering cutoff in Mpc/h
     elif (mask_choice == 4):
-      # LSST_YX_M3.mask  (lmax = 375) on CS ------------------------------------
+      # LSST_YX_M3.mask  ------------------------------------
       ξp_CUTOFF = 22.048 # cutoff scale in arcminutes
       ξm_CUTOFF = 69.564 # cutoff scale in arcminutes
       gc_CUTOFF = 21     # Galaxy clustering cutoff in Mpc/h
     elif (mask_choice == 5):
-      # LSST_YX_M4.mask  all ones ---------------------------------------------
+      # LSST_YX_M3.mask  ------------------------------------
+      ξp_CUTOFF = 44.096  # cutoff scale in arcminutes
+      ξm_CUTOFF = 139.128 # cutoff scale in arcminutes
+      gc_CUTOFF = 21     # Galaxy clustering cutoff in Mpc/h
+    elif (mask_choice == 6):
+      # LSST_YX_M6.mask  all ones ---------------------------------------------
       ξp_CUTOFF = 0 # cutoff scale in arcminutes
       ξm_CUTOFF = 0 # cutoff scale in arcminutes
       gc_CUTOFF = 0 # Galaxy clustering cutoff in Mpc/h

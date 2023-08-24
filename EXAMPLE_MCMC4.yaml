@@ -482,8 +482,9 @@ sampler:
     # --------------------------------------
     measure_speeds: False
     drag: False
-    # Cosmolike Cosmic Shear without Cosmo change is ~0.43seconds (8 cores) @OCelote
-    # Euclid Emulator runs in ~0.1seconds @Ocelote
+    # Cosmolike Cosmic Shear without Cosmo change is ~0.45seconds (8 cores) @OCelote
+    # Euclid Emulator runs in ~0.15seconds @Ocelote
+    # Euclid Emulator destroys the speed-up (~0.02s) when only varying LSST_MX
     blocking:
       - [1,
           [
@@ -497,12 +498,12 @@ sampler:
             LSST_DZ_L5, LSST_B1_1, LSST_B1_2, LSST_B1_3, LSST_B1_4, LSST_B1_5
           ]
         ]
-      - [25,
+      - [5,
           [
             LSST_M1, LSST_M2, LSST_M3, LSST_M4, LSST_M5, 
           ]
         ]
-    oversample_power: 0.3
+    oversample_power: 0.2
     oversample_thin: True
     # --------------------------------------
     # --------------------------------------

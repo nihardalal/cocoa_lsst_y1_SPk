@@ -385,12 +385,12 @@ void cpp_init_lens_sample(std::string multihisto_file, const int Ntomo, const do
       "init_lens_sample", tomo.ggl_Npowerspectra);
   }
 
-  for (int i=0; i<tomo.shear_Nbin; i++)
+  for (int i=0; i<tomo.clustering_Nbin; i++)
   {
     nuisance.bias_zphot_clustering[i] = 0.0;
 
     spdlog::info("\x1b[90m{}\x1b[0m: bin {} - {} = {}.",
-      "init_source_sample", i, "<z_L>", zmean(i));
+      "init_lens_sample", i, "<z_L>", zmean(i));
   }
 
   spdlog::debug("\x1b[90m{}\x1b[0m: Ends", "init_lens_sample");

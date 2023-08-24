@@ -2,15 +2,21 @@ timing: False
 debug: False
 stop_at_error: False
 
+# THIS EXAMPLE POST PROCESS EXAMPLE_MCMC1 WITH HIGH ACC SETTINGS ON BOTH CAMB AND COSMOLIKE
+# THE POST PROCESS ASSUMES 0.35% BURN IN (IT WILL SKIP THEM); IT ALSO THINS THE CHAIN
+# BY A FACTOR 5
+
 likelihood:
   lsst_y1.lsst_3x2pt:
     path: ./external_modules/data/lsst_y1
     accuracyboost: 1.0
     integration_accuracy: 0
     kmax_boltzmann: 5.0
-
+    # 1 EE2, 2 Halofit
+    non_linear_emul: 2
+    
 # IN THIS EXAMPLE, WE ASSUMED THE DATA VECTOR WERE CREATED W/ THE FOLLOWING 
-# PARAMETERS
+# PARAMETERS (WE USED HALOFIT TO CREATE THE DATAVECTOR)
 #    As_1e9: 2.1
 #    ns: 0.96605
 #    H0: 67.32
@@ -57,7 +63,6 @@ likelihood:
 #    value: 0.416
 #    latex: b_\mathrm{BMAG-LSST}^5
 
-
 params:
   As_1e9:
     prior:
@@ -68,7 +73,7 @@ params:
       loc: 2.1
       scale: 0.65
     proposal: 0.4
-    latex: 10^9 A_\mathrm{s})
+    latex: 10^9 A_\mathrm{s}
     drop: true
     renames: A
   ns:
@@ -144,9 +149,6 @@ params:
   omegach2:
     value: 'lambda omegam, omegab, mnu, H0: (omegam-omegab)*(H0/100)**2-(mnu*(3.046/3)**0.75)/94.0708'
     latex: \Omega_\mathrm{c} h^2
-  tau:
-    value: 0.0697186
-    latex: \tau_\mathrm{reio}
   omegal:
     latex: \Omega_\Lambda
   omegamh2:
@@ -306,7 +308,7 @@ params:
       scale: 0.005
     proposal: 0.005
     latex: m_\mathrm{LSST}^5
- # Lensing photo-z errors
+  # Lensing photo-z errors
   LSST_DZ_L1:
     prior:
       dist: norm
@@ -361,6 +363,7 @@ params:
       loc: -0.0146753
       scale: 0.005
     proposal: 0.005
+    latex: \Delta z_\mathrm{l,LSST}^5
   # Bin bias parameters
   LSST_B1_1:
     prior:
@@ -420,7 +423,7 @@ theory:
     use_renames: True
     extra_args:
       halofit_version: takahashi
-      AccuracyBoost: 1.05
+      AccuracyBoost: 1.1
       lens_potential_accuracy: 1.0
       num_massive_neutrinos: 1
       nnu: 3.046
@@ -428,32 +431,55 @@ theory:
       accurate_massive_neutrino_transfers: false
       k_per_logint: 20
 
-sampler:
-  polychord:
-    path: null
-    nlive: 128
-    num_repeats: 2d
-    do_clustering: false
-    precision_criterion: 0.001
-    boost_posterior: 10
-    feedback: 2
-    blocking:
-      - [1,
-          [
-            As_1e9, ns, H0, omegab, omegam, w
-          ]
-        ]
-      - [2,
-          [
-            LSST_DZ_S1, LSST_DZ_S2, LSST_DZ_S3, LSST_DZ_S4, LSST_DZ_S5, 
-            LSST_A1_1, LSST_A1_2, LSST_DZ_L1, LSST_DZ_L2, LSST_DZ_L3, LSST_DZ_L4, 
-            LSST_DZ_L5, LSST_B1_1, LSST_B1_2, LSST_B1_3, LSST_B1_4, LSST_B1_5
-          ]
-        ]
-      - [25,
-          [
-            LSST_M1, LSST_M2, LSST_M3, LSST_M4, LSST_M5
-          ]
-        ]
+post:
+  skip: 0.35
+  thin: 5
+  suffix: HACC
+  remove:
+    theory:
+      camb:
+        path: ./external_modules/code/CAMB
+        stop_at_error: False
+        use_renames: True
+        extra_args:
+          halofit_version: takahashi
+          AccuracyBoost: 1.1
+          lens_potential_accuracy: 1.0
+          num_massive_neutrinos: 1
+          nnu: 3.046
+          dark_energy_model: ppf
+          accurate_massive_neutrino_transfers: false
+          k_per_logint: 20
+    likelihood:
+      lsst_y1.lsst_3x2pt:
+        path: ./external_modules/data/lsst_y1
+        accuracyboost: 1.0
+        integration_accuracy: 0
+        kmax_boltzmann: 5.0
+        # 1 EE2, 2 Halofit
+        non_linear_emul: 2
+  add:
+    theory:
+      camb:
+        path: ./external_modules/code/CAMB
+        stop_at_error: False
+        use_renames: True
+        extra_args:
+          halofit_version: takahashi
+          AccuracyBoost: 2.0
+          lens_potential_accuracy: 1.0
+          num_massive_neutrinos: 1
+          nnu: 3.046
+          dark_energy_model: ppf
+          accurate_massive_neutrino_transfers: false
+          k_per_logint: 20    
+    likelihood:
+      lsst_y1.lsst_3x2pt:
+        path: ./external_modules/data/lsst_y1
+        accuracyboost: 3.0
+        integration_accuracy: 5
+        kmax_boltzmann: 20.0
+        # 1 EE2, 2 Halofit
+        non_linear_emul: 2
 
-output: ./projects/lsst_y1/chains/EXAMPLE_POLY2
+output: ./projects/lsst_y1/chains/EXAMPLE_MCMC2

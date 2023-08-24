@@ -1,10 +1,11 @@
 path: null
-data_file: LSST_Y1.dataset
+data_file: LSST_Y1_M1_GGL0.05.dataset
 accuracyboost: 1.0
 samplingboost: 1.0
 integration_accuracy: 0
 kmax_boltzmann: 5.0
 speed: 1
+non_linear_emul: 2
 
 print_intermediate_products: False
 
@@ -18,4 +19,4 @@ filename_baryon_pca: "./projects/lsst_y1/data/pca.txt"
 print_datavector: False
 print_datavector_file: "./projects/lsst_y1/chains/lsst_y1_theory.modelvector"
 
-params: !defaults [params_lsst_3x2pt]
+params: !defaults [params_lsst_lens, params_lsst_source]

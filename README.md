@@ -8,14 +8,12 @@ In this tutorial, we assume the user installed Cocoa via the *Conda installation
       cd ./cocoa/Cocoa/projects
       git clone --depth 1 https://github.com/CosmoLike/cocoa_lsst_y1.git lsst_y1 
 
-The option `--depth 1` prevents git from downloading the entire project history. 
+By convention, the Cosmolike Organization hosts a Cobaya-Cosmolike project named XXX at `CosmoLike/cocoa_XXX`. However, our scripts and YAML files assume the removal of the `cocoa_` prefix when cloning the repository.
 
-:warning: **Warning** :warning: Cocoa developers should drop the shallow clone option `--depth 1`; they should also authenticate to GitHub via SSH keys:
+📚📚 *Additional Information for experts and developers* 📚📚: Cocoa developers should drop the shallow clone option `--depth 1`, which prevents git from downloading the entire repository history. Developers should also authenticate to GitHub via SSH keys:
 
       $CONDA_PREFIX/bin/git clone git@github.com:CosmoLike/cocoa_lsst_y1.git lsst_y1
-
-By convention, the Cosmolike Organization hosts a Cobaya-Cosmolike project named XXX at `CosmoLike/cocoa_XXX`. However, our scripts and YAML files assume the removal of the `cocoa_` prefix when cloning the repository.
- 
+      
  **Step :three:**: go back to the Cocoa main folder, and activate the private Python environment
     
       cd ../
@@ -40,7 +38,7 @@ MCMC:
 
 ## Deleting Cosmolike projects <a name="running_cosmolike_projects"></a>
 
-:warning: (**warning**) :warning: Never delete the `lsst_y1` folder from the project folder without running `stop_cocoa` first; otherwise, Cocoa will have ill-defined soft links at `Cocoa/cobaya/cobaya/likelihoods/`, `Cocoa/external_modules/code/` and `Cocoa/external_modules/data/`
+:warning::warning: Never delete the `lsst_y1` folder from the project folder without running `stop_cocoa` first; otherwise, Cocoa will have ill-defined soft links at `Cocoa/cobaya/cobaya/likelihoods/`, `Cocoa/external_modules/code/` and `Cocoa/external_modules/data/`
 
 ## MCMC Convergence Criteria <a name="running_cosmolike_projects"></a>
 

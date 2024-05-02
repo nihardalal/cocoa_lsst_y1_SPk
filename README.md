@@ -14,7 +14,7 @@ By convention, the Cosmolike Organization hosts a Cobaya-Cosmolike project named
 
       $CONDA_PREFIX/bin/git clone git@github.com:CosmoLike/cocoa_lsst_y1.git lsst_y1
       
- **Step :three:**: go back to the Cocoa main folder, and activate the private Python environment
+ **Step :two:**: go back to the Cocoa main folder, and activate the private Python environment
     
       cd ../
       source start_cocoa
@@ -23,11 +23,11 @@ By convention, the Cosmolike Organization hosts a Cobaya-Cosmolike project named
 
 The script *start_cocoa* creates symbolic links so cobaya can see the likelihood and data files. It also adds the *Cobaya-Cosmolike interface* of all projects to `LD_LIBRARY_PATH` and `PYTHONPATH` paths.
 
-**Step :four:**: compile the project
+**Step :three:**: compile the project
  
       source ./projects/lsst_y1/scripts/compile_lsst_y1
 
-**Step :five:**: select the number of OpenMP cores (below, we set it to 4), and run a template YAML file
+**Step :four:**: select the number of OpenMP cores (below, we set it to 4), and run a template YAML file
     
       export OMP_PROC_BIND=close; export OMP_NUM_THREADS=4
       mpirun -n 1 --oversubscribe --mca btl vader,tcp,self --bind-to core:overload-allowed --rank-by core --map-by numa:pe=${OMP_NUM_THREADS} cobaya-run ./projects/lsst_y1/EXAMPLE_EVALUATE1.yaml -f

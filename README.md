@@ -50,4 +50,4 @@ MCMC:
     # Gelman-Rubin R-1 on std deviations
     Rminus1_cl_stop: 0.15
     
-For most applications, these settings are overkill (except when computing some tension and goodness of fit metrics). Please adjust these settings to your needs. 
+For most applications, these settings are overkill, except when computing some tension and goodness of fit metrics. Please adjust these settings to your needs. 

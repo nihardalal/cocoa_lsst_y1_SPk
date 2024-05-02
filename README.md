@@ -21,8 +21,6 @@ By convention, the Cosmolike Organization hosts a Cobaya-Cosmolike project named
  
 :warning::warning: Remember to run the start_cocoa script only **after cloning** the project repository. 
 
-The script *start_cocoa* creates symbolic links so cobaya can see the likelihood and data files. It also adds the *Cobaya-Cosmolike interface* of all projects to `LD_LIBRARY_PATH` and `PYTHONPATH` paths.
-
 **Step :three:**: compile the project
  
       source ./projects/lsst_y1/scripts/compile_lsst_y1
@@ -38,7 +36,7 @@ MCMC:
 
 ## Deleting Cosmolike projects <a name="running_cosmolike_projects"></a>
 
-:warning::warning: Never delete the `lsst_y1` folder from the project folder without running `stop_cocoa` first; otherwise, Cocoa will have ill-defined soft links at `Cocoa/cobaya/cobaya/likelihoods/`, `Cocoa/external_modules/code/` and `Cocoa/external_modules/data/`
+:warning::warning: Never delete the `lsst_y1` folder from the project folder without running `stop_cocoa` first; otherwise, Cocoa will have ill-defined soft links at `Cocoa/cobaya/cobaya/likelihoods/`, `Cocoa/external_modules/code/` and `Cocoa/external_modules/data/`. Why? The script `start_cocoa` creates symbolic links so cobaya can see the likelihood and data files. It also adds the *Cobaya-Cosmolike interface* of all projects to `LD_LIBRARY_PATH` and `PYTHONPATH` paths.
 
 ## MCMC Convergence Criteria <a name="running_cosmolike_projects"></a>
 

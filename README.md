@@ -28,11 +28,14 @@ By convention, the Cosmolike Organization hosts a Cobaya-Cosmolike project named
 **Step :four:**: select the number of OpenMP cores (below, we set it to 4), and run a template YAML file
     
       export OMP_PROC_BIND=close; export OMP_NUM_THREADS=4
+      
+One model evaluation:
+      
       mpirun -n 1 --oversubscribe --mca btl vader,tcp,self --bind-to core:overload-allowed --rank-by core --map-by numa:pe=${OMP_NUM_THREADS} cobaya-run ./projects/lsst_y1/EXAMPLE_EVALUATE1.yaml -f
  
 MCMC:
 
-        $(cocoapy38)(.local) mpirun -n 4 --oversubscribe --mca btl vader,tcp,self --bind-to core:overload-allowed --rank-by core --map-by numa:pe=${OMP_NUM_THREADS} cobaya-run ./projects/lsst_y1/EXAMPLE_MCMC1.yaml -f
+      mpirun -n 4 --oversubscribe --mca btl vader,tcp,self --bind-to core:overload-allowed --rank-by core --map-by numa:pe=${OMP_NUM_THREADS} cobaya-run ./projects/lsst_y1/EXAMPLE_MCMC1.yaml -f
 
 ## Deleting Cosmolike projects <a name="running_cosmolike_projects"></a>
 

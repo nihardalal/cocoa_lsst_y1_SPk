@@ -1,4 +1,4 @@
-## Running Cosmolike projects (as a developer) <a name="running_cosmolike_projects"></a> 
+## Running Cosmolike projects <a name="running_cosmolike_projects"></a> 
 
 In this tutorial, we assume the user installed Cocoa via the *Conda installation* method, and the name of the Conda environment is `cocoa`. We also presume the user's terminal is in the folder where Cocoa was cloned.
 

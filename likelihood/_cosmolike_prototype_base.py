@@ -6,6 +6,10 @@ import scipy
 from scipy.interpolate import interp1d
 import sys
 import time
+import warnings # KZ baryon-mod
+warnings.simplefilter("ignore", UserWarning) # KZ baryon-mod
+import pyspk as spk # KZ baryon-mod
+from astropy.cosmology import FlatLambdaCDM # KZ baryon-mod
 
 # Local
 from cobaya.likelihoods.base_classes import DataSetLikelihood
@@ -208,6 +212,11 @@ class _cosmolike_prototype_base(DataSetLikelihood):
       "omegab": None,
       "mnu": None,
       "w": None,
+      # KZ baryon start
+      "alpha_spk": None,
+      "beta_spk": None,
+      "gamma_spk": None,  
+       # KZ baryon end
       "Pk_interpolator": {
         "z": self.z_interp_2D,
         "k_max": self.kmax_boltzmann * self.accuracyboost,
@@ -279,6 +288,8 @@ class _cosmolike_prototype_base(DataSetLikelihood):
       lnPL[i::self.len_z_interp_2D]  = t2[i*self.len_k_interp_2D:(i+1)*self.len_k_interp_2D]
     lnPL  += np.log((h**3))
 
+    
+
     if self.non_linear_emul == 1:
 
       params = {
@@ -292,7 +303,7 @@ class _cosmolike_prototype_base(DataSetLikelihood):
         'wa'   : 0.0
       }
 
-      kbt = np.power(10.0, np.linspace(-2.0589, 0.973, self.len_k_interp_2D))
+      kbt = np.power(10.0, np.linspace(-2.0589, 0.973, self.len_k_interp_2D)) 
       kbt, tmp_bt = self.emulator.get_boost(params, self.z_interp_2D, kbt)
       logkbt = np.log10(kbt)
 
@@ -317,6 +328,46 @@ class _cosmolike_prototype_base(DataSetLikelihood):
 
     else:
       raise LoggedError(self.log, "non_linear_emul = %d is an invalid option", non_linear_emul)
+
+    
+    
+    ######## KZ baryon start
+    ## kz note: for safety, we'll iterate every z specified. the supression in low z is not very smooth so probably better not to trust interpolator
+    #call the supression model before the non-linear pk calculation
+
+    if self.baryon_supression == 1:
+        if self.non_linear_emul == 2:
+            raise NotImplementedError # not tested by kunhao
+
+        cosmo = FlatLambdaCDM(H0=self.provider.get_param("H0"), Om0=self.provider.get_param("omegam"),) 
+
+        alpha = self.provider.get_param("alpha_spk")
+        beta  = self.provider.get_param("beta_spk")
+        gamma = self.provider.get_param("gamma_spk")
+        
+        for i, this_z in enumerate(self.z_interp_2D):
+            # KZ note: spk only works for z<3. let's assume higher z doesn't matter
+            # for future we might need even a lower-z cutoff because of spk calibration
+            if this_z < 3. and this_z>0.125: # KZ include the lower bound gives a chi2 shift of ~15
+                # k_spk, sup = spk.sup_model(SO=200, z=this_z, fb_a=fb_a, fb_pow=fb_pow, fb_pivot=fb_pivot, k_max=8, verbose=False) # method 1 example
+                k_spk, sup = spk.sup_model(SO=500, z=this_z, alpha=alpha, beta=beta, gamma=gamma, cosmo=cosmo, verbose=False) # method 2
+
+                interp_spk = interp1d(np.log10(k_spk), 
+                np.log(sup), 
+                kind = 'linear', 
+                fill_value = 'extrapolate', 
+                assume_sorted = True
+                                )
+                
+                
+
+                lnbt_spk = interp_spk(log10k_interp_2D)
+                lnbt_spk[np.power(10,log10k_interp_2D) < 8.73e-3] = 0.0
+
+                lnPNL[i::self.len_z_interp_2D]  = lnPNL[i::self.len_z_interp_2D] + lnbt_spk
+                
+    ######## KZ baryon end
+        
 
     # Compute chi(z) - convert to Mpc/h
     chi = self.provider.get_comoving_radial_distance(self.z_interp_1D) * h

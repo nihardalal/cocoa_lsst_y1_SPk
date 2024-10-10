@@ -1,11 +1,13 @@
 path: null
-data_file: LSST_Y1_M1_GGL0.05.dataset
+data_file: LSST_Y1.dataset
 accuracyboost: 1.0
 samplingboost: 1.0
 integration_accuracy: 0
 kmax_boltzmann: 5.0
 speed: 1
-non_linear_emul: 2
+non_linear_emul: 1
+# KZ: baryon supression. 0: none, 1: spk, 2: bcemu
+baryon_supression: 0
 # 0 = NO_IA (AMPLITUDES SET TO ZERO), 1 = IA_NLA_LF
 # 2 = IA_REDSHIFT_BINNING, 3 = IA_REDSHIFT_EVOLUTION
 IA_redshift_evolution: 3
@@ -25,3 +27,4 @@ print_datavector: False
 print_datavector_file: "./projects/lsst_y1/chains/lsst_y1_theory.modelvector"
 
 params: !defaults [params_lsst_source]
+
